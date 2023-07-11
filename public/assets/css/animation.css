@@ -1,0 +1,125 @@
+/* KEYFRAME */
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    20% {
+        background-position: 20% 50%;
+    }
+    40% {
+        background-position: 40% 50%;
+    }
+    60% {
+        background-position: 60% 50%;
+    }
+    80% {
+        background-position: 80% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes navbar_up {
+    0% {
+        opacity: 0%;
+        transform: rotate(180deg);
+    }
+    100% {
+        opacity: 100%;
+        transform: rotate(0deg);
+        background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+}
+
+@keyframes navbar_down {
+    0% {
+        opacity: 0%;
+        transform: rotate(180deg);
+    }
+    100% {
+        opacity: 100%;
+        margin-left: 10%;
+        transform: rotate(0deg);
+        background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='rgba%28255, 255, 255, 0.55%29'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e");
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0);
+        opacity: 100%;
+    }
+    50% {
+        transform: translateY(-100%);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 100%;
+    }
+}
+
+@keyframes hideUp {
+    0% {
+        transform: translateY(0);
+        opacity: 100%;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0%;
+    }
+}
+
+@keyframes showDown {
+    0% {
+        transform: translateY(-100);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 100%;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes y-responsive {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(-5%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
