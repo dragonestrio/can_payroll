@@ -25,19 +25,19 @@ class HomeController extends Controller
         return view('welcome', $data);
     }
 
-    public function register_index(Request $request)
-    {
-        $data = [
-            'title'         => 'Register',
-            'app'           => env('APP_NAME'),
-            'author'        => '',
-            'description'   => '',
-            'state'         => 'read',
-            'position'      => 'register',
-        ];
+    // public function register_index(Request $request)
+    // {
+    //     $data = [
+    //         'title'         => 'Register',
+    //         'app'           => env('APP_NAME'),
+    //         'author'        => '',
+    //         'description'   => '',
+    //         'state'         => 'read',
+    //         'position'      => 'register',
+    //     ];
 
-        return view('register', $data);
-    }
+    //     return view('register', $data);
+    // }
 
     public function login_index(Request $request)
     {
@@ -208,5 +208,65 @@ class HomeController extends Controller
         ];
 
         return view('dashboard.admin', $data);
+    }
+
+    public function report(Request $request)
+    {
+        $data = [
+            'title'         => 'Cetak Laporan Keuangan',
+            'app'           => env('APP_NAME'),
+            'author'        => '',
+            'description'   => '',
+            'state'         => 'read',
+            'position'      => 'report',
+        ];
+
+        return view('report.index', $data);
+    }
+
+    public function report_process(Request $request)
+    {
+        $financial_addition = [];
+        $financial_deduction = [];
+
+        $date_find = $request->input('date');
+        $financial = Financial::where('created_at', 'like', '%' . $date_find . '%')->latest()->get();
+        $payroll = Payroll::with('payroll_details')->where('date', 'like', '%' . $date_find . '%')->latest()->get();
+
+        foreach ($financial as $key => $value) {
+            switch ($value->category) {
+                case 'additional':
+                    array_push($financial_addition, $value);
+                    break;
+                case 'deductions':
+                    array_push($financial_deduction, $value);
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+        }
+
+        $financial_addition = json_decode(json_encode($financial_addition));
+        $financial_deduction = json_decode(json_encode($financial_deduction));
+        $financial = [
+            'addition' => $financial_addition,
+            'deduction' => $financial_deduction,
+        ];
+
+        $data = [
+            'title'         => 'Laporan Keuangan Periode '. date('M Y', strtotime($date_find)),
+            'app'           => env('APP_NAME'),
+            'author'        => '',
+            'description'   => '',
+            'state'         => 'read',
+            'position'      => 'report',
+            'date_find'     => $date_find,
+            'payroll'       => $payroll,
+            'financial'     => json_decode(json_encode($financial)),
+        ];
+
+        return view('report.print', $data);
     }
 }

@@ -196,6 +196,31 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button border-0 bg-transparent text-capitalize @if ($position != 'report')
+                                collapsed
+                            @endif" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <i class="mdi me-2 mdi-file-chart"></i>
+                                <span>laporan keuangan</span>
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse border-0 bg-transparent @if ($position == 'report')
+                            show
+                        @endif">
+                            <ul class="accordion-body">
+                                <li class="sidebar-item">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link @if ($position == 'employee' && $state == 'read'
+                                    || $position == 'employee' && $state == 'update')
+                                        active
+                                    @endif" href="{{ url('report') }}" aria-expanded="false">
+                                        <i class="mdi me-2 mdi-download"></i>
+                                        <span class="hide-menu text-capitalize">cetak laporan</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </li>
 
             </ul>

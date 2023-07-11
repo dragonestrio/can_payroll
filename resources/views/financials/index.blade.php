@@ -31,6 +31,7 @@
                 <div class="row">
                     <div class="col-12 col-lg-8">
                         <div class="d-flex justify-content-between px-2 px-lg-4">
+                            <p class="p-0 m-0 text-capitalize text-xxs">tanggal</p>
                             <p class="p-0 m-0 text-capitalize text-xxs">nama</p>
                             <p class="p-0 m-0 text-capitalize text-xxs">jenis transaksi</p>
                             <p class="p-0 m-0 text-capitalize text-xxs">nominal</p>
@@ -49,6 +50,7 @@
                         <div class="row px-3">
                             <div class="col-12 col-lg-8 py-3 table-responsive">
                                 <div class="d-flex justify-content-between">
+                                    <p class="p-0 m-0 text-capitalize py-2 mx-4">{{ date('d M Y', strtotime($item->created_at)) }}</p>
                                     <p class="p-0 m-0 text-capitalize py-2 mx-4">{{ $item->name }}</p>
                                     @switch($item->category)
                                         @case('additional')

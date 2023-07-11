@@ -29,8 +29,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/', [HomeController::class, 'login_index'])->name('home');
     //
     // register
-    Route::get('register', [HomeController::class, 'register_index'])->name('register');
-    Route::post('register', [UserController::class, 'register'])->name('register.store');
+    // Route::get('register', [HomeController::class, 'register_index'])->name('register');
+    // Route::post('register', [UserController::class, 'register'])->name('register.store');
     //
     // login
     Route::get('login', [HomeController::class, 'login_index'])->name('login');
@@ -72,6 +72,10 @@ Route::middleware('auth')->group(function () {
         Route::resource('payroll', PayrollController::class)->except('update');
         Route::post('payroll/create', [PayrollController::class, 'create'])->name('payroll.create.next');
         Route::post('payroll/{payroll}/edit', [PayrollController::class, 'edit'])->name('payroll.edit.next');
+        //
+        // report
+        Route::get('report', [HomeController::class, 'report'])->name('report.index');
+        Route::post('report/generate', [HomeController::class, 'report_process'])->name('report.index');
         //
 
     });
