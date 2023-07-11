@@ -16,7 +16,7 @@ class UserFactory extends Factory
     {
         return [
             'id' => $this->faker->md5(),
-            'email' => 'superadmin@gmail.com',
+            'email' => 'admin@cann.my.id',
             'password' => bcrypt('Acbd1234'),
             'name' => 'Admin',
             'phone' => '1231231231',
